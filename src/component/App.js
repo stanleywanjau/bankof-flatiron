@@ -7,7 +7,7 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch(' http://localhost:3000/transactions')
+    fetch('  https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions')
   .then(res => res.json())
   .then(data => setTransactions(data));
  
@@ -15,7 +15,7 @@ function App() {
   
    function handleSubmit(FormData){
     
-    fetch('http://localhost:3000/transactions',{
+    fetch('https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,14 +36,14 @@ function App() {
   
 }
 function deleteTransaction (transactionId){
-  fetch(`http://localhost:3000/transactions/${transactionId}`, {
+  fetch(`https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions/${transactionId}`, {
     method: 'DELETE',
   })
     .then(response => {
       if (!response.ok) {
         throw new Error('Failed to delete the transaction from the server.');
       }
-      return fetch('http://localhost:3000/transactions');
+      return fetch('https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions');
     })
     .then(res => res.json())
     .then(data => setTransactions(data))
