@@ -40,6 +40,7 @@ function App() {
 function deleteTransaction (transactionId){
   fetch(`https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions/${transactionId}`, {
     method: 'DELETE',
+    mode: 'cors',
   })
     .then(response => {
       if (!response.ok) {
