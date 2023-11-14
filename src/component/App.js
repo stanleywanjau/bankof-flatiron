@@ -26,7 +26,7 @@ function App() {
       if (!response.ok) {
         throw new Error('Failed to send data to the server.')
       }
-      return fetch('http://localhost:3000/transactions');
+      return fetch('https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions');
     })
       .then(res => res.json())
       .then(data => setTransactions(data))
