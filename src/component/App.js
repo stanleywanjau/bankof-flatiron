@@ -26,10 +26,12 @@ function App() {
       if (!response.ok) {
         throw new Error('Failed to send data to the server.')
       }
-      return fetch('https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions');
+      return response.json();
     })
-      .then(res => res.json())
-      .then(data => setTransactions(data))
+    
+      .then((newTransaction) => {
+        setTransactions([...transactions, newTransaction]);
+      })
       .catch(error => {
       console.error('Error:', error);
     });
@@ -43,10 +45,9 @@ function deleteTransaction (transactionId){
       if (!response.ok) {
         throw new Error('Failed to delete the transaction from the server.');
       }
-      return fetch('https://my-json-server.typicode.com/stanleywanjau/bankof-flatiron/transactions');
+      setTransactions(transactions.filter((transaction) => transaction.id !== transactionId));
     })
-    .then(res => res.json())
-    .then(data => setTransactions(data))
+    
     .catch(error => {
       console.error('Error:', error);
     });
